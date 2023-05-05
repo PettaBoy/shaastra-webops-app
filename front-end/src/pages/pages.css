@@ -1,0 +1,22 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #ddd;
+}
+
+th, td {
+    border: 1px solid #ddd;
+}
+
+.form-control {
+    height: 30%;
+}
+
+.form-control-sm {
+    height: auto;
+}
+
+.form-control-lg {
+    height: 40%;
+}
