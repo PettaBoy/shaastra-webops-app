@@ -1,5 +1,6 @@
 import { gql } from '@apollo/client';
 
+// Get all tasks
 const GET_TASKS = gql`
     query GetAllTasks {
         task {
@@ -11,6 +12,7 @@ const GET_TASKS = gql`
     }
 `;
 
+// Get a single task
 const GET_TASK = gql`
     query GetTask($getTaskId: Float!) {
         getTask(id: $getTaskId) {
@@ -22,6 +24,7 @@ const GET_TASK = gql`
     }
 `;
 
+// Create a new task
 const CREATE_TASK = gql`
     mutation CreateTask($data: CreateNewTask!) {
         createTask(data: $data) {
@@ -33,6 +36,7 @@ const CREATE_TASK = gql`
     }
 `;
 
+// Update a task
 const UPDATE_TASK = gql`
     mutation UpdateTask($updateTaskId: Float!, $data: UpdateTask!) {
         updateTask(data: $data, id: $updateTaskId) {
@@ -44,12 +48,14 @@ const UPDATE_TASK = gql`
     }
 `;
 
+// Delete a task
 const DELETE_TASK = gql`
     mutation DeleteTask($deleteTaskId: Float!) {
         deleteTask(id: $deleteTaskId)
     }
 `;
 
+// Get completed and incomplete tasks
 const GET_COMPLETED_TASKS = gql`
     query GetCompletedTasks {
         getCompletedTasks {
@@ -60,7 +66,6 @@ const GET_COMPLETED_TASKS = gql`
         }
     }
 `;
-
 const GET_INCOMPLETE_TASKS = gql`
     query GetUncompletedTasks {
         getUncompletedTasks {

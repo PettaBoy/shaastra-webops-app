@@ -15,9 +15,11 @@ const TaskUpdate = () => {
         completed: false
     });
 
+    // Get the task id from the url
     const { id } = useParams();
     updatedTask.id = parseInt(id);
 
+    // Get the task to be updated
     const [updateTask, { error, loading }] = useMutation(UPDATE_TASK, {
         variables: {
             updateTaskId: updatedTask.id,

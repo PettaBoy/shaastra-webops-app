@@ -5,6 +5,7 @@ import { GET_TASKS, DELETE_TASK, GET_COMPLETED_TASKS, GET_INCOMPLETE_TASKS } fro
 import './pages.css'
 
 const TaskMain = () => {
+    // Get all tasks and set the visibility of the completed and incomplete tasks
     const [visibleComplete, setVisibleComplete] = useState(false);
     const [visibleIncomplete, setVisibleIncomplete] = useState(false);
     const { loading, error, data } = useQuery(GET_TASKS);
@@ -27,9 +28,11 @@ const TaskMain = () => {
         awaitRefetchQueries: true,
     });
 
+    // Get completed and incomplete tasks
     const { data: completedTasks } = useQuery(GET_COMPLETED_TASKS);
     const { data: incompleteTasks } = useQuery(GET_INCOMPLETE_TASKS);
 
+    // Table header
     const TableHeader = () => {
         return (
             <thead>
@@ -43,6 +46,7 @@ const TaskMain = () => {
         )
     }
 
+    // Show completed tasks
     const ShowCompletedTasks = () => {
         if (completedTasks.getCompletedTasks.length === 0) {
             return <p>No completed tasks</p>
@@ -78,11 +82,11 @@ const TaskMain = () => {
             )
         }
     }
-
     const ToggleVisibleComplete = () => {
         setVisibleComplete(!visibleComplete);
     }
 
+    // Show incomplete tasks
     const ShowIncompleteTasks = () => {
         if (incompleteTasks.getUncompletedTasks.length === 0) {
             return <p>No incomplete tasks</p>
@@ -118,11 +122,11 @@ const TaskMain = () => {
             )
         }
     }
-
     const ToggleVisibleIncomplete = () => {
         setVisibleIncomplete(!visibleIncomplete);
     }
 
+    // Loading and error
     if (loading) return <p>Loading...</p>;
     if (error) return <p>{error.message}</p>;
 

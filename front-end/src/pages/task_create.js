@@ -4,12 +4,14 @@ import { CREATE_TASK } from "./gql_reqs";
 import "./pages.css";
 
 const TaskCreate = () => {
+    // Create a new task object to store the new task
     const [task, setTask] = useState({
         title: "",
         description: "",
         completed: false
     });
 
+    // Create the new task
     const [createTask, { error, loading }] = useMutation(CREATE_TASK, {
         variables: {
             data: {
